@@ -43,7 +43,7 @@ public class KafkaSource {
                 .count();
         StreamingQuery query = wordcountDF
                 .writeStream()
-                .outputMode(OutputMode.Complete())
+                .outputMode(OutputMode.Update())
                 .format("console")
                 .start();
         query.awaitTermination();

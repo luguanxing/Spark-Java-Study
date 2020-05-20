@@ -10,7 +10,6 @@ import org.apache.spark.sql.types.StructType;
 
 public class HDFSSource {
 
-
     public static void main(String[] args) throws Exception {
         // 创建相关的context
         SparkSession sparkSession = SparkSession
@@ -22,10 +21,10 @@ public class HDFSSource {
         jsc.setLogLevel("ERROR");
 
         // 读取HDFS数据并使用shcema解析
-        String path = "hdfs://127.0.0.1:8020/dataset/structured-streaming-data";
+        String path = "hdfs://127.0.0.1:8020/dataset/";
         Dataset<Row> dataDF = sparkSession
                 .readStream()
-                .json(path);
+                .text(path);
 
         // 输出
         StreamingQuery query = dataDF
