@@ -19,10 +19,8 @@ public class MysqlDemo {
     public void before() {
         // 初始化数据，连接metastore获取元信息
         sparkSession = SparkSession.builder()
-                .appName("HiveDemo")
+                .appName("MysqlDemo")
                 .master("local[2]")
-                .config("hive.metastore.uris", "thrift://127.0.0.1:9083")
-                .enableHiveSupport()
                 .getOrCreate();
         jsc = new JavaSparkContext(sparkSession.sparkContext());
         jsc.setLogLevel("ERROR");
